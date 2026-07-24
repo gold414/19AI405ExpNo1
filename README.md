@@ -40,3 +40,65 @@
 <p>Treat unhealthy patients in each room. And check for the unhealthy patients in random room</p>
 <h3>STEP 5:</h3>
 <p>Measure the performance parameters: For each treatment performance incremented, for each movement performance decremented</p>
+
+## Code:
+```
+import random
+
+performance = 0
+
+rooms = {
+    "Room 1": 98,
+    "Room 2": 102,
+    "Room 3": 99,
+    "Room 4": 101,
+    "Room 5": 97
+}
+
+def display_patients():
+    print("Patient Temperatures")
+    print("----------------------")
+    for room, temp in rooms.items():
+        print(room, ":", temp, "°F")
+
+def check_patients():
+    global performance
+
+    print("\nChecking Patients...\n")
+
+    room_names = list(rooms.keys())
+    random.shuffle(room_names)
+
+    for room in room_names:
+        print("Agent moved to", room)
+        performance -= 1
+
+        temperature = rooms[room]
+
+        if temperature > 98.5:
+            print("Temperature:", temperature, "°F")
+            print("Patient has Fever")
+            print("Medicine Prescribed")
+            performance += 10
+        else:
+            print("Temperature:", temperature, "°F")
+            print("Patient is Healthy")
+
+        print()
+
+def show_performance():
+    print("----------------------")
+    print("Final Performance =", performance)
+
+display_patients()
+check_patients()
+show_performance()
+```
+
+## Output:
+
+<img width="1668" height="823" alt="Screenshot 2026-07-24 105012" src="https://github.com/user-attachments/assets/611789bc-c8b5-4049-8ae7-92437a5329e3" />
+
+## Result
+
+The above algorithem run successful and the cleaning process was running successfully
